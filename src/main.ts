@@ -1,5 +1,5 @@
 import { Menu, Notice, Platform, Plugin, TFile } from "obsidian";
-import type {} from "obsidian-typings";
+import type { } from "obsidian-typings";
 import { type CopyUrlInPreviewSettings, CopyUrlInPreviewSettingTab, DEFAULT_SETTINGS } from "./settings";
 import type { CanvasNodeWithUrl } from "./types";
 import { clearUrl, onElementToOff } from "./utils/helpers";
@@ -35,7 +35,7 @@ export default class CopyUrlInPreview extends Plugin {
         // register the image menu for canvas
         this.registerEvent(
             this.app.workspace.on("file-menu", (menu, file, source) => {
-                if (source === "canvas-menu" && file instanceof TFile && isImageFile(`.${file.extension}`)) {
+                if (file instanceof TFile && isImageFile(`.${file.extension}`)) {
                     menu.addItem((item) =>
                         setItem(item, "open-in-new-tab").onClick(() => {
                             openTfileInNewTab(this.app, file);
@@ -49,6 +49,7 @@ export default class CopyUrlInPreview extends Plugin {
                 }
             }),
         );
+        this.register
         this.registerEvent(
             this.app.workspace.on("canvas:node-menu", (menu, node) => {
                 const data = (node as CanvasNodeWithUrl).unknownData;
@@ -67,6 +68,7 @@ export default class CopyUrlInPreview extends Plugin {
                 }
             }),
         );
+        
         this.registerEvent(
             this.app.workspace.on("url-menu", (menu, url) => {
                 url = clearUrl(url);
